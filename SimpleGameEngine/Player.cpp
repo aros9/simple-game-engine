@@ -30,6 +30,9 @@ Player::Player()
     m_downCollision = true;
 
     m_Collider = new Collider(m_Body);
+    m_CanJump = true;
+    m_CollisionDirection.x = 0;
+    m_CollisionDirection.y = 1; // Collision with ground
 }
 
 void Player::moveLeft()
@@ -52,6 +55,16 @@ void Player::stopRight()
     m_RightPressed = false;
 }
 
+void Player::startJump()
+{
+    m_SpacePressed = true;
+}
+
+void Player::stopJump()
+{
+    m_SpacePressed = false;
+}
+
 void Player::setRightCollision(bool _col)
 {
     m_rightCollision = _col;
@@ -66,93 +79,76 @@ void Player::setDownCollision(bool _col)
 {
     m_downCollision = _col;
 }
+//
+//void Player::moveUp()
+//{
+//    m_UpPressed = true;
+//}
+//
+//void Player::stopUp()
+//{
+//    m_UpPressed = false;
+//}
 
-void Player::moveUp()
-{
-    m_UpPressed = true;
-}
 
-void Player::stopUp()
-{
-    m_UpPressed = false;
-}
-
-
-void Player::moveDown()
-{
-    m_DownPressed = true;
-}
-
-void Player::stopDown()
-{
-    m_DownPressed = false;
-}
-
-void Player::jump()
-{
-    m_CanJump = false;
-    m_Position.y = -sqrtf(2.0f * 981.0f * m_JumpHeight); // 100 units - 1 meter
-}
+//void Player::moveDown()
+//{
+//    m_DownPressed = true;
+//}
+//
+//void Player::stopDown()
+//{
+//    m_DownPressed = false;
+//}
 
 void Player::OnCollision(sf::Vector2f direction)
 {
-    if (direction.x < 0.0f)
-    {
-        // Left collision
-        m_Position.x = 0.0f;
-    }
-    else if (direction.x > 0.0f)
-    {
-        // Right collision
-        m_Position.x = 0.0f;
-    }
-    if (direction.y < 0.0f)
-    {
-        // Bottom collision
-        m_Position.y = 0.0f;
-        m_CanJump = true;
-    }
-    else if (m_Position.y > 0.0f)
-    {
-        // Top collision
-        m_Position.y = 0.0f;
-    }
+    if (direction.y == -1.0f) m_CanJump = true;
 }
+
 
 void Player::update(float elapsedTime)
 {
     m_Row = 0;
-   // if (!m_rightCollision)
-    //{
+    if (!m_rightCollision)
+    {
         if (m_RightPressed)
         {
             m_Position.x += m_Speed * elapsedTime;
             m_FaceRight = true;
             m_Row = 1;
         }
-   // }
-  //  if (!m_leftCollision)
-   // {
+    }
+    if (!m_leftCollision)
+    {
         if (m_LeftPressed)
         {
             m_Position.x -= m_Speed * elapsedTime;
             m_FaceRight = false;
             m_Row = 1;
         }
-  //  }
+    }
 
 
     // gravity
-   // m_Position.y += 98.1f * elapsedTime;
+    m_Position.y += 98.1f * elapsedTime;
 
-    if (m_UpPressed)
-    {
-        m_Position.y -= m_Speed * elapsedTime;
-    }
+    //if (m_UpPressed)
+    //{
+    //    m_Position.y -= m_Speed * elapsedTime;
+    //}
 
-    if (m_DownPressed)
+    //if (m_DownPressed)
+    //{
+    //    m_Position.y += m_Speed * elapsedTime;
+    //}
+
+    OnCollision(m_CollisionDirection);
+
+    if (m_SpacePressed)
     {
-        m_Position.y += m_Speed * elapsedTime;
+        m_CanJump = false;
+        m_Position.y -= sqrtf(2.0f * 98.1f * m_JumpHeight);
     }
 
     m_Body.setPosition(m_Position);

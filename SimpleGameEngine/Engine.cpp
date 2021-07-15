@@ -19,6 +19,8 @@ Engine::Engine()
     // Associate the sprite with the texture
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
+    m_Player = new Player;
+
 }
 
 void Engine::start()

@@ -14,7 +14,7 @@ private:
     sf::Sprite m_BackgroundSprite;
     sf::Texture m_BackgroundTexture;
 
-    Player m_Player;
+    Player* m_Player;
 
     Platform m_Platform;
 

@@ -7,7 +7,7 @@ void Engine::draw()
 
     // Draw the background
     m_Window.draw(m_BackgroundSprite);
-    m_Window.draw(m_Player.getBody());
+    m_Window.draw(m_Player->getBody());
 
     //
     m_Window.draw(m_Platform.getBody());
