@@ -31,11 +31,6 @@ private:
     bool m_LeftPressed;
     bool m_RightPressed;
     bool m_SpacePressed;
-    //bool m_DownPressed;
-
-    bool m_rightCollision;
-    bool m_leftCollision;
-    bool m_downCollision;
 
     Collider* m_Collider;
 
@@ -57,15 +52,6 @@ public:
     void stopRight();
     void startJump();
     void stopJump();
-
-    void setRightCollision(bool _col);
-    void setLeftCollision(bool _col);
-    void setDownCollision(bool _col);
-
-    //void moveUp();
-    //void stopUp();
-    //void moveDown();
-    //void stopDown();
 
     void OnCollision(sf::Vector2f direction);
  

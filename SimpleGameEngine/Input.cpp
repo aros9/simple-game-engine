@@ -27,31 +27,9 @@ void Engine::input()
         m_Player->stopRight();
     }
 
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    //{
-    //    m_Player.moveUp();
-    //}
-    //else
-    //{
-    //    m_Player.stopUp();
-    //}
-
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    //{
-    //    m_Player.moveDown();
-    //}
-    //else
-    //{
-    //    m_Player.stopDown();
-    //}
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_Player->canJump())
     {
         m_Player->startJump();
-    }
-    else
-    {
-        m_Player->stopJump();
     }
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))

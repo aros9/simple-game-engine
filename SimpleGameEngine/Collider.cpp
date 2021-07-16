@@ -9,9 +9,6 @@ Collider::Collider(sf::RectangleShape& body)
 
 bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float push)
 {
-	player->setDownCollision(false);
-	player->setRightCollision(false);
-	player->setDownCollision(false);
 
 	sf::Vector2f otherPosition = player->getCollider()->GetPosition();
 	sf::Vector2f otherHalfSize = player->getCollider()->GetHalfSize();
@@ -34,8 +31,6 @@ bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float pus
 			{
 				Move(intersectX * (1.0f - push), 0.0f);
 				player->getCollider()->Move(-intersectX * push, 0.0f);
-				
-				player->setRightCollision(true);
 
 				direction.x = 1.0f;
 				direction.y = 0.0f;
@@ -44,8 +39,6 @@ bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float pus
 			{
 				Move(-intersectX * (1.0f - push), 0.0f);
 				player->getCollider()->Move(intersectX * push, 0.0f);
-
-				player->setLeftCollision(true);
 
 				direction.x = -1.0f;
 				direction.y = 0.0f;
@@ -57,8 +50,6 @@ bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float pus
 			{
 				Move(0.0f, intersectY * (1.0f - push));
 				player->getCollider()->Move(0.0f, -intersectY * push);
-
-				player->setDownCollision(true);
 
 				direction.x = 0.0f;
 				direction.y = 1.0f;

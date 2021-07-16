@@ -9,7 +9,7 @@ void Engine::draw()
     m_Window.draw(m_BackgroundSprite);
     m_Window.draw(m_Player->getBody());
 
-    //
+    // Draw platforms
     m_Window.draw(m_Platform.getBody());
     m_Window.draw(m_Floor.getBody());
 
