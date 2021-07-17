@@ -11,7 +11,7 @@ class Collider;
 class Player
 {
 private:
-    float m_Speed;
+    sf::Vector2f m_Speed;
 
     sf::Vector2f m_Position;
 

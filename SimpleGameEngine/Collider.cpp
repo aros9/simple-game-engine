@@ -7,11 +7,10 @@ Collider::Collider(sf::RectangleShape& body)
 
 }
 
-bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float push)
+bool Collider::checkCollision(Collider* collider, sf::Vector2f& direction, float push)
 {
-
-	sf::Vector2f otherPosition = player->getCollider()->GetPosition();
-	sf::Vector2f otherHalfSize = player->getCollider()->GetHalfSize();
+	sf::Vector2f otherPosition = collider->GetPosition();
+	sf::Vector2f otherHalfSize = collider->GetHalfSize();
 	sf::Vector2f thisPosition = GetPosition();
 	sf::Vector2f thisHalfSize = GetHalfSize();
 
@@ -29,39 +28,37 @@ bool Collider::checkCollision(Player* player, sf::Vector2f& direction, float pus
 		{
 			if (deltaX > 0.0f)
 			{
+				//Right collision
 				Move(intersectX * (1.0f - push), 0.0f);
-				player->getCollider()->Move(-intersectX * push, 0.0f);
+				collider->Move(-intersectX * push, 0.0f);
 
 				direction.x = 1.0f;
-				direction.y = 0.0f;
 			}
 			else
 			{
+				//Left collision
 				Move(-intersectX * (1.0f - push), 0.0f);
-				player->getCollider()->Move(intersectX * push, 0.0f);
+				collider->Move(intersectX * push, 0.0f);
 
 				direction.x = -1.0f;
-				direction.y = 0.0f;
 			}
 		}
 		else
 		{
 			if (deltaY > 0.0f)
 			{
+				//Top collision
 				Move(0.0f, intersectY * (1.0f - push));
-				player->getCollider()->Move(0.0f, -intersectY * push);
+				collider->Move(0.0f, -intersectY * push);
 
-				direction.x = 0.0f;
 				direction.y = 1.0f;
 			}
 			else
 			{
+				//Bottom collision
 				Move(0.0f, -intersectY * (1.0f - push));
-				player->getCollider()->Move(0.0f, intersectY * push);
+				collider->Move(0.0f, intersectY * push);
 
-				// set up collision
-
-				direction.x = 0.0f;
 				direction.y = -1.0f;
 			}
 		}

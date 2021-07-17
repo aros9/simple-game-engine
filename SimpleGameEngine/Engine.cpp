@@ -1,9 +1,6 @@
 #include "Engine.h"
 
 Engine::Engine()
-    :
-    m_Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 0.0f)),
-    m_Floor(nullptr, sf::Vector2f(1920.0f, 100.0f), sf::Vector2f(0.0f, 980.0f))
 {
     // Get the screen resolution and create an SFML window and View
     sf::Vector2f resolution;
@@ -19,7 +16,8 @@ Engine::Engine()
     // Associate the sprite with the texture
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
-    m_Player = new Player;
+    platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, resolution.y - 200)));
+    platforms.push_back(Platform(nullptr, sf::Vector2f(1920.0f, 100.0f), sf::Vector2f(0.0f, resolution.y)));
 
 }
 

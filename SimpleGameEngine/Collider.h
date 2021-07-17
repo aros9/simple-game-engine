@@ -18,7 +18,7 @@ public:
 
 	void Move(float dx, float dy) { m_Body.move(dx, dy); }
 
-	bool checkCollision(Player* player,sf::Vector2f& direction, float push);
+	bool checkCollision(Collider* collider, sf::Vector2f& direction, float push);
 	sf::Vector2f GetPosition() { return m_Body.getPosition(); }
 	sf::Vector2f GetHalfSize() { return m_Body.getSize() / 2.0f; }
 

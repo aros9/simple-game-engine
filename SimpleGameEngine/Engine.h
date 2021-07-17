@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h";
 #include "Platform.h"
+#include <vector>
 
 class Engine
 {
@@ -14,11 +15,9 @@ private:
     sf::Sprite m_BackgroundSprite;
     sf::Texture m_BackgroundTexture;
 
-    Player* m_Player;
+    Player m_Player;
 
-    Platform m_Platform;
-
-    Platform m_Floor;
+    std::vector <Platform> platforms;
 
     void input();
     void update(float dtAsSeconds);

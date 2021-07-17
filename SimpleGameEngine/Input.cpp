@@ -11,25 +11,25 @@ void Engine::input()
     // Handle the player moving
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        m_Player->moveLeft();
+        m_Player.moveLeft();
     }
     else
     {
-        m_Player->stopLeft();
+        m_Player.stopLeft();
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        m_Player->moveRight();
+        m_Player.moveRight();
     }
     else
     {
-        m_Player->stopRight();
+        m_Player.stopRight();
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_Player->canJump())
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_Player.canJump())
     {
-        m_Player->startJump();
+        m_Player.startJump();
     }
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
