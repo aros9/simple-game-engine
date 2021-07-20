@@ -16,8 +16,10 @@ Engine::Engine()
     // Associate the sprite with the texture
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
-    platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, resolution.y - 200)));
-    platforms.push_back(Platform(nullptr, sf::Vector2f(1920.0f, 100.0f), sf::Vector2f(0.0f, resolution.y)));
+    platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 20.0f), sf::Vector2f(500.0f, resolution.y - 150.0f))); // platorm1
+    platforms.push_back(Platform(nullptr, sf::Vector2f(400.0f, 20.0f), sf::Vector2f(1000.0f, resolution.y - 300.0f))); // platform2
+    platforms.push_back(Platform(nullptr, sf::Vector2f(100.0f, 250.0f), sf::Vector2f(1500.0f, resolution.y - 150.0f))); // platform3
+    platforms.push_back(Platform(nullptr, sf::Vector2f(1920.0f, 100.0f), sf::Vector2f(resolution.x / 2.0f, resolution.y))); // floor
 
 }
 

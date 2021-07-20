@@ -27,7 +27,6 @@ private:
 
     bool m_LeftPressed;
     bool m_RightPressed;
-    bool m_SpacePressed;
 
     Collider* m_Collider;
 

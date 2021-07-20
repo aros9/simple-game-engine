@@ -3,7 +3,7 @@
 Player::Player()
 {
     m_Speed.x = 400.0f;
-    m_Speed.y = 350.0f;
+    m_Speed.y = 450.0f;
 
     m_JumpHeight = 100;
 
@@ -26,7 +26,7 @@ Player::Player()
 
     m_Collider = new Collider(m_Body);
     m_CanJump = true;
-    m_JumpSpeed = 981.0f;
+    m_JumpSpeed = 1500.0f;
 
     m_CollisionDirection.x = 0;
     m_CollisionDirection.y = 0;
@@ -57,11 +57,6 @@ void Player::startJump()
     m_CanJump = false;
 }
 
-void Player::stopJump()
-{
-    m_SpacePressed = false;
-}
-
 void Player::OnCollision(sf::Vector2f direction)
 {
     if (direction.x < 0.0f)
@@ -77,14 +72,13 @@ void Player::OnCollision(sf::Vector2f direction)
     if (direction.y < 0.0f)
     {
         //Bottom collision
-       // m_CanJump = true;
         m_Speed.y = 0;
-        m_JumpSpeed = 981.0f;
+        m_JumpSpeed = 1500.0f;
     }
     else if (direction.y > 0.0f)
     {
         //Top collision
-        m_Speed.y = 0;
+        m_JumpSpeed = 0.0f;
     }
 }
 
@@ -93,8 +87,7 @@ void Player::update(float elapsedTime)
 {
     m_Row = 0;
     m_Speed.x = 400.0f;
-    //m_Speed.y = 98.1f;
-    m_Speed.y = 350.0f;
+    m_Speed.y = 450.0f;
 
     OnCollision(m_CollisionDirection);
 
@@ -119,7 +112,7 @@ void Player::update(float elapsedTime)
 
      if (!m_CanJump)
      {
-         if (m_JumpSpeed >= 0.0f)
+         if (m_JumpSpeed > 0.0f)
          {
              m_Row = 3;
              m_Position.y -= m_JumpSpeed * elapsedTime;
