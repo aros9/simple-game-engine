@@ -1,11 +1,5 @@
 #pragma once
-#ifndef COLLIDER_H
-#define COLLIDER_H
-
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-
-class Player;
 
 class Collider
 {
@@ -23,5 +17,3 @@ public:
 	sf::Vector2f GetHalfSize() { return m_Body.getSize() / 2.0f; }
 
 };
-
-#endif

@@ -1,17 +1,14 @@
 #pragma once
-#ifndef PLAYER_H
-#define PLAYER_H
 
 #include <SFML/Graphics.hpp>
 #include "Animation.h"
 #include "Collider.h"
 
-class Collider;
-
 class Player
 {
 private:
     sf::Vector2f m_Speed;
+
 
     sf::Vector2f m_Position;
 
@@ -36,6 +33,7 @@ private:
 
     bool m_CanJump;
     float m_JumpHeight;
+    float m_JumpSpeed;
     
 public:
     Player();
@@ -58,5 +56,3 @@ public:
     void update(float elapsedTime);
 
 };
-
-#endif

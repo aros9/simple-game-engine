@@ -2,8 +2,8 @@
 
 Player::Player()
 {
-    m_Speed.x = 400;
-    m_Speed.y = 0;
+    m_Speed.x = 400.0f;
+    m_Speed.y = 350.0f;
 
     m_JumpHeight = 100;
 
@@ -12,7 +12,7 @@ Player::Player()
     m_Body.setTexture(&m_Texture);
 
     m_Position.x = sf::VideoMode::getDesktopMode().width / 2.0f;
-    m_Position.y = 900;
+    m_Position.y = 900.0f;
 
     m_Body.setPosition(m_Position);
     
@@ -26,6 +26,7 @@ Player::Player()
 
     m_Collider = new Collider(m_Body);
     m_CanJump = true;
+    m_JumpSpeed = 981.0f;
 
     m_CollisionDirection.x = 0;
     m_CollisionDirection.y = 0;
@@ -53,7 +54,7 @@ void Player::stopRight()
 
 void Player::startJump()
 {
-    m_SpacePressed = true;
+    m_CanJump = false;
 }
 
 void Player::stopJump()
@@ -65,24 +66,25 @@ void Player::OnCollision(sf::Vector2f direction)
 {
     if (direction.x < 0.0f)
     {
-        //Left collision
+        //Right collision
         m_Speed.x = 0.0f;
     }
     else if (direction.x > 0.0f)
     {
-        //Right collision
+        //Left collision
         m_Speed.x = 0.0f;
     }
     if (direction.y < 0.0f)
     {
         //Bottom collision
-        m_CanJump = true;
-        m_Speed.y = 0.0f;
+       // m_CanJump = true;
+        m_Speed.y = 0;
+        m_JumpSpeed = 981.0f;
     }
     else if (direction.y > 0.0f)
     {
         //Top collision
-        m_Speed.y = 0.0f;
+        m_Speed.y = 0;
     }
 }
 
@@ -90,15 +92,15 @@ void Player::OnCollision(sf::Vector2f direction)
 void Player::update(float elapsedTime)
 {
     m_Row = 0;
-    m_Speed.x = 400;
-    m_Speed.y = 98.1f;
-
+    m_Speed.x = 400.0f;
+    //m_Speed.y = 98.1f;
+    m_Speed.y = 350.0f;
 
     OnCollision(m_CollisionDirection);
 
         if (m_RightPressed)
         {
-            if (m_CollisionDirection.x > 0.0f) m_Speed.x = 400;
+            if (m_CollisionDirection.x > 0.0f) m_Speed.x = 400.0f;
             m_Position.x += m_Speed.x * elapsedTime;
             m_FaceRight = true;
             m_Row = 1;
@@ -106,7 +108,7 @@ void Player::update(float elapsedTime)
 
         if (m_LeftPressed)
         {
-            if (m_CollisionDirection.x < 0.0f) m_Speed.x = 400;
+            if (m_CollisionDirection.x < 0.0f) m_Speed.x = 400.0f;
             m_Position.x -= m_Speed.x * elapsedTime;
             m_FaceRight = false;
             m_Row = 1;
@@ -115,12 +117,16 @@ void Player::update(float elapsedTime)
     // gravity
      m_Position.y += m_Speed.y * elapsedTime;
 
-    // need to change jumping
-    /*if (m_SpacePressed && m_CollisionDirection.y != -1)
-    {
-        m_CanJump = false;
-        m_Position.y -= sqrtf(2.0f * 98.1f * m_JumpHeight);
-    }*/
+     if (!m_CanJump)
+     {
+         if (m_JumpSpeed >= 0.0f)
+         {
+             m_Row = 3;
+             m_Position.y -= m_JumpSpeed * elapsedTime;
+             m_JumpSpeed -= 1.0f;
+         }
+         else m_CanJump = true;
+     }
 
     m_Body.setPosition(m_Position);
 
