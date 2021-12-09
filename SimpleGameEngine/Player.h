@@ -48,7 +48,8 @@ public:
     void stopLeft();
     void stopRight();
     void startJump();
-    void stopJump();
+
+    void shoot(sf::Vector2i direction);
 
     void OnCollision(sf::Vector2f direction);
  

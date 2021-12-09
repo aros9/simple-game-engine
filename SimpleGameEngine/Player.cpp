@@ -57,6 +57,11 @@ void Player::startJump()
     m_CanJump = false;
 }
 
+void Player::shoot(sf::Vector2i direction)
+{
+
+}
+
 void Player::OnCollision(sf::Vector2f direction)
 {
     if (direction.x < 0.0f)
@@ -73,7 +78,7 @@ void Player::OnCollision(sf::Vector2f direction)
     {
         //Bottom collision
         m_Speed.y = 0;
-        m_JumpSpeed = 1500.0f;
+        m_JumpSpeed = 1000.0f;
     }
     else if (direction.y > 0.0f)
     {
