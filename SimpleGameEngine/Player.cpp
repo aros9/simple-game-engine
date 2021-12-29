@@ -59,7 +59,7 @@ void Player::startJump()
 
 void Player::shoot(sf::Vector2i direction)
 {
-
+    m_Bullets.push_back(Bullet(m_Position, direction));
 }
 
 void Player::OnCollision(sf::Vector2f direction)
@@ -133,5 +133,8 @@ void Player::update(float elapsedTime)
 
     m_CollisionDirection.x = 0.0f;
     m_CollisionDirection.y = 0.0f;
+
+    for (Bullet& bullet : m_Bullets)
+        bullet.move(elapsedTime);
 
 }

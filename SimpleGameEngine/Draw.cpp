@@ -13,6 +13,9 @@ void Engine::draw()
     for (Platform& platform : platforms)
         m_Window.draw(platform.getBody());
 
+    for (Bullet& bullet : m_Player.getBullets())
+        m_Window.draw(bullet.getBody());
+
     // Show everything we have just drawn
     m_Window.display();
 }

@@ -36,7 +36,6 @@ void Engine::input()
     {
         // shoot
         sf::Vector2i mousePos = sf::Mouse::getPosition(m_Window);
-        printf("Moooooouseeeeeeeeeeeeeeeee\n");
         m_Player.shoot(mousePos);
     }
 
