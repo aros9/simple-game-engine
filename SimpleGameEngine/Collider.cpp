@@ -33,7 +33,7 @@ bool Collider::checkCollision(Collider* collider, sf::Vector2f& direction, float
 				collider->Move(-intersectX * push, 0.0f);
 
 				direction.x = 1.0f;
-				printf("Left collision\n");
+				//printf("Left collision\n");
 			}
 			else
 			{
@@ -42,7 +42,7 @@ bool Collider::checkCollision(Collider* collider, sf::Vector2f& direction, float
 				collider->Move(intersectX * push, 0.0f);
 
 				direction.x = -1.0f;
-				printf("Right collision\n");
+				//printf("Right collision\n");
 			}
 		}
 		else
@@ -54,7 +54,7 @@ bool Collider::checkCollision(Collider* collider, sf::Vector2f& direction, float
 				collider->Move(0.0f, -intersectY * push);
 
 				direction.y = 1.0f;
-				printf("Top collision\n");
+				//printf("Top collision\n");
 			}
 			else
 			{
@@ -63,7 +63,7 @@ bool Collider::checkCollision(Collider* collider, sf::Vector2f& direction, float
 				collider->Move(0.0f, intersectY * push);
 
 				direction.y = -1.0f;
-				printf("Bottom collision\n");
+				//printf("Bottom collision\n");
 			}
 		}
 

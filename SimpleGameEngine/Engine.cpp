@@ -21,6 +21,11 @@ Engine::Engine()
     platforms.push_back(Platform(nullptr, sf::Vector2f(100.0f, 250.0f), sf::Vector2f(1500.0f, resolution.y - 150.0f))); // platform3
     platforms.push_back(Platform(nullptr, sf::Vector2f(1920.0f, 100.0f), sf::Vector2f(resolution.x / 2.0f, resolution.y))); // floor
 
+    // boundries
+    platforms.push_back(Platform(nullptr, sf::Vector2f(1920.0f, 0.0f), sf::Vector2f(resolution.x / 2.0f , 0))); // top
+    platforms.push_back(Platform(nullptr, sf::Vector2f(0.0f, resolution.y), sf::Vector2f(0, resolution.y / 2.0f))); // left
+    platforms.push_back(Platform(nullptr, sf::Vector2f(0.0f, resolution.y), sf::Vector2f(resolution.x, resolution.y / 2.0f))); // right
+
 }
 
 void Engine::start()

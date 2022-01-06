@@ -77,8 +77,8 @@ void Player::OnCollision(sf::Vector2f direction)
     if (direction.y < 0.0f)
     {
         //Bottom collision
-        m_Speed.y = 0;
-        m_JumpSpeed = 1000.0f;
+        m_Speed.y = 0.0f;
+        m_JumpSpeed = 1500.0f;
     }
     else if (direction.y > 0.0f)
     {
@@ -134,7 +134,7 @@ void Player::update(float elapsedTime)
     m_CollisionDirection.x = 0.0f;
     m_CollisionDirection.y = 0.0f;
 
-    for (Bullet& bullet : m_Bullets)
-        bullet.move(elapsedTime);
+    //for (Bullet& bullet : m_Bullets)
+    //    bullet.move(elapsedTime);
 
 }

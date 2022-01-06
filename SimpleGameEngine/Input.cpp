@@ -34,7 +34,6 @@ void Engine::input()
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        // shoot
         sf::Vector2i mousePos = sf::Mouse::getPosition(m_Window);
         m_Player.shoot(mousePos);
     }

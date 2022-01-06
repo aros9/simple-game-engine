@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Collider.h"
 #include "Bullet.h"
+#include <list>
 
 class Player
 {
@@ -20,7 +21,7 @@ private:
 
     sf::Vector2f m_CollisionDirection; 
 
-    std::vector<Bullet> m_Bullets;
+    std::list<Bullet> m_Bullets;
 
     // row of a sprite needed to do animation
     unsigned int m_Row;
@@ -36,7 +37,6 @@ private:
     float m_JumpHeight;
     float m_JumpSpeed;
 
-    
 public:
     Player();
 
@@ -44,7 +44,7 @@ public:
     sf::Vector2f getPosition() { return m_Position; };
     Collider* getCollider() { return m_Collider; };
     sf::Vector2f& getDirection() { return m_CollisionDirection; };
-    std::vector<Bullet> getBullets() { return m_Bullets; }
+    std::list<Bullet>& getBullets() { return m_Bullets; }
     bool canJump() { return m_CanJump; };
 
     void moveLeft();
