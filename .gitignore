@@ -399,3 +399,4 @@ examples/*/*.xml
 *.suo
 *.csproj.user
 *.VC.db
+*.o

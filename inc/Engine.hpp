@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Player.h";
-#include "Platform.h"
+#include "Player.hpp"
+#include "Platform.hpp"
 #include <vector>
 
 class Engine

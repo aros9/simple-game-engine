@@ -1,4 +1,4 @@
-#include "Bullet.h"
+#include "../inc/Bullet.hpp"
 
 Bullet::Bullet(sf::Vector2f position, sf::Vector2i direction)
 {

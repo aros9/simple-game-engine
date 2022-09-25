@@ -1,4 +1,4 @@
-#include "Platform.h"
+#include "../inc/Platform.hpp"
 
 Platform::Platform(sf::Texture* texture, sf::Vector2f size, sf::Vector2f position)
 {

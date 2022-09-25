@@ -1,9 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Animation.h"
-#include "Collider.h"
-#include "Bullet.h"
+#include "Animation.hpp"
+#include "Collider.hpp"
+#include "Bullet.hpp"
 #include <list>
 
 class Player
