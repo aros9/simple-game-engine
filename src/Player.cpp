@@ -7,7 +7,7 @@ Player::Player()
 
     m_JumpHeight = 100;
 
-    m_Texture.loadFromFile("src/pengu.png");
+    m_Texture.loadFromFile("img/pengu.png");
 
     m_Body.setTexture(&m_Texture);
 

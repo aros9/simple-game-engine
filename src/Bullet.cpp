@@ -2,7 +2,7 @@
 
 Bullet::Bullet(sf::Vector2f position, sf::Vector2i direction)
 {
-	m_Texture.loadFromFile("src/pocisk.jpg");
+	m_Texture.loadFromFile("img/pocisk.jpg");
 	m_Body.setTexture(&m_Texture);
 	m_Position = position;
 	m_Body.setPosition(m_Position);

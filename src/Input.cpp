@@ -8,7 +8,7 @@ void Engine::input()
         m_Window.close();
     }
 
-    // Handle the player moving
+    // Handle the player movement
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         m_Player.moveLeft();

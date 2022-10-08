@@ -11,7 +11,7 @@ Engine::Engine()
     m_Window.create(sf::VideoMode(resolution.x, resolution.y), "Simple Game", sf::Style::Fullscreen);
 
     // Load the background into the texture
-    m_BackgroundTexture.loadFromFile("src/wallpap.png");
+    m_BackgroundTexture.loadFromFile("img/wallpap.png");
 
     // Associate the sprite with the texture
     m_BackgroundSprite.setTexture(m_BackgroundTexture);
